@@ -5,9 +5,9 @@ import co.com.sofkau.dddchallenge.generic.DomainEvent;
 public class GamePriceChanged extends DomainEvent {
 
     private final String gameId;
-    private final String price;
+    private final Double price;
 
-    public GamePriceChanged(String gameId, String price) {
+    public GamePriceChanged(String gameId, Double price) {
         super("dddchallenge.domain.catalog.events.gamePriceChanged");
         this.gameId = gameId;
         this.price = price;
@@ -17,7 +17,7 @@ public class GamePriceChanged extends DomainEvent {
         return gameId;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 

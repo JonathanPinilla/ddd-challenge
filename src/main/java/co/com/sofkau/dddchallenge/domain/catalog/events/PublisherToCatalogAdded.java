@@ -8,12 +8,14 @@ public class PublisherToCatalogAdded extends DomainEvent {
 
     private final String catalogId;
     private final String publisherId;
+    private final String name;
     private final LocalDate foundationDate;
 
-    public PublisherToCatalogAdded(String catalogId, String publisherId, LocalDate foundationDate) {
+    public PublisherToCatalogAdded(String catalogId, String publisherId, String name, LocalDate foundationDate) {
         super("dddchallenge.domain.catalog.events.publisherToCatalogAdded");
         this.catalogId = catalogId;
         this.publisherId = publisherId;
+        this.name = name;
         this.foundationDate = foundationDate;
     }
 
@@ -23,6 +25,10 @@ public class PublisherToCatalogAdded extends DomainEvent {
 
     public String getPublisherId() {
         return publisherId;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public LocalDate getFoundationDate() {
