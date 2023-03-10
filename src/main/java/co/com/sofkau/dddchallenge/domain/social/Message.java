@@ -1,7 +1,7 @@
 package co.com.sofkau.dddchallenge.domain.social;
 
-import co.com.sofkau.dddchallenge.common.MessageId;
-import co.com.sofkau.dddchallenge.common.PlayerId;
+import co.com.sofkau.dddchallenge.domain.common.MessageId;
+import co.com.sofkau.dddchallenge.domain.common.PlayerId;
 import co.com.sofkau.dddchallenge.domain.social.values.Content;
 import co.com.sofkau.dddchallenge.generic.Entity;
 
@@ -9,14 +9,14 @@ public class Message extends Entity<MessageId> {
 
     protected MessageId messageId;
     protected Content content;
-    protected PlayerId emiterId;
+    protected PlayerId emitterId;
     protected PlayerId receiverId;
 
-    public Message(MessageId messageId, Content content, PlayerId emiterId, PlayerId receiverId) {
+    public Message(MessageId messageId, Content content, PlayerId emitterId, PlayerId receiverId) {
         super(messageId);
         this.messageId = messageId;
         this.content = content;
-        this.emiterId = emiterId;
+        this.emitterId = emitterId;
         this.receiverId = receiverId;
     }
 
@@ -29,7 +29,7 @@ public class Message extends Entity<MessageId> {
     }
 
     public PlayerId emiterId() {
-        return emiterId;
+        return emitterId;
     }
 
     public PlayerId receiverId() {

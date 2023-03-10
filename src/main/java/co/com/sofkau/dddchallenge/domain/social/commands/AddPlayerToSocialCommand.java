@@ -6,10 +6,14 @@ public class AddPlayerToSocialCommand extends Command {
 
     private final String socialId;
     private final String playerId;
+    private final String name;
+    private final String nickName;
 
-    public AddPlayerToSocialCommand(String socialId, String playerId) {
+    public AddPlayerToSocialCommand(String socialId, String playerId, String name, String nickName) {
         this.socialId = socialId;
         this.playerId = playerId;
+        this.name = name;
+        this.nickName = nickName;
     }
 
     public String getSocialId() {
@@ -18,6 +22,14 @@ public class AddPlayerToSocialCommand extends Command {
 
     public String getPlayerId() {
         return playerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNickName() {
+        return nickName;
     }
 
 }

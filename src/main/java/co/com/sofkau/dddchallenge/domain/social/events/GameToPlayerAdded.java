@@ -1,15 +1,16 @@
-package co.com.sofkau.dddchallenge.domain.social.commands;
+package co.com.sofkau.dddchallenge.domain.social.events;
 
-import co.com.sofkau.dddchallenge.generic.Command;
+import co.com.sofkau.dddchallenge.generic.DomainEvent;
 
-public class AddGamesToPlayerCommand extends Command {
+public class GameToPlayerAdded extends DomainEvent {
 
     private final String socialId;
     private final String playerId;
     private final String gameId;
     private final String catalogId;
 
-    public AddGamesToPlayerCommand(String socialId, String playerId, String gameId, String catalogId) {
+    public GameToPlayerAdded(String socialId, String playerId, String gameId, String catalogId) {
+        super("dddchallenge.social.gameToPlayerAdded");
         this.socialId = socialId;
         this.playerId = playerId;
         this.gameId = gameId;

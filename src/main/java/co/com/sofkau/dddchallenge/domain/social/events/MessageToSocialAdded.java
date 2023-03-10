@@ -7,12 +7,16 @@ public class MessageToSocialAdded extends DomainEvent {
     private final String messageId;
     private final String socialId;
     private final String content;
+    private final String emitterId;
+    private final String receiverId;
 
-    public MessageToSocialAdded(String messageId, String socialId, String content) {
+    public MessageToSocialAdded(String messageId, String socialId, String content, String emitterId, String receiverId) {
         super("dddchallenge.social.messagetosocialadded");
         this.messageId = messageId;
         this.socialId = socialId;
         this.content = content;
+        this.emitterId = emitterId;
+        this.receiverId = receiverId;
     }
 
     public String getMessageId() {
@@ -25,6 +29,14 @@ public class MessageToSocialAdded extends DomainEvent {
 
     public String getContent() {
         return content;
+    }
+
+    public String getEmitterId() {
+        return emitterId;
+    }
+
+    public String getReceiverId() {
+        return receiverId;
     }
 
 }

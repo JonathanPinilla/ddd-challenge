@@ -6,11 +6,15 @@ public class PlayerToSocialAdded extends DomainEvent {
 
     private final String playerId;
     private final String socialId;
+    private final String name;
+    private final String nickName;
 
-    public PlayerToSocialAdded(String playerId, String socialId) {
+    public PlayerToSocialAdded(String socialId, String playerId, String name, String nickName) {
         super("dddchallenge.social.playertosocialadded");
         this.playerId = playerId;
         this.socialId = socialId;
+        this.name = name;
+        this.nickName = nickName;
     }
 
     public String getPlayerId() {
@@ -19,6 +23,14 @@ public class PlayerToSocialAdded extends DomainEvent {
 
     public String getSocialId() {
         return socialId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getNickName() {
+        return nickName;
     }
 
 }

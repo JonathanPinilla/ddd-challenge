@@ -1,4 +1,4 @@
-package co.com.sofkau.dddchallenge.common;
+package co.com.sofkau.dddchallenge.domain.common;
 
 import co.com.sofkau.dddchallenge.generic.ValueObject;
 
