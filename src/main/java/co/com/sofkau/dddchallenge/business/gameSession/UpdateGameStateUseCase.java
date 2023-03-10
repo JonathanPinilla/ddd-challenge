@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.GameSessionId;
 import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.UpdateGameStateCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UpdateGameStateUseCase implements UseCaseCommand<UpdateGameStateCommand> {
 
     EventsRepository eventsRepository;
@@ -19,6 +21,7 @@ public class UpdateGameStateUseCase implements UseCaseCommand<UpdateGameStateCom
 
     @Override
     public List<DomainEvent> apply(UpdateGameStateCommand command) {
+
         List<DomainEvent> events = eventsRepository.findByAggregateRootId(command.getGameSessionId());
         var gameSession = GameSession.from(GameSessionId.of(command.getGameSessionId()), events);
 

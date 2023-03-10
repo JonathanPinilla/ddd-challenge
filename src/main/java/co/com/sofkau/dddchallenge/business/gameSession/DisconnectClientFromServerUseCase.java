@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.GameSessionId;
 import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.DisconnectClientFromServerCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class DisconnectClientFromServerUseCase implements UseCaseCommand<DisconnectClientFromServerCommand> {
 
     EventsRepository eventsRepository;
@@ -23,7 +25,7 @@ public class DisconnectClientFromServerUseCase implements UseCaseCommand<Disconn
         GameSession gameSession = GameSession.from(GameSessionId.of(command.getGameSessionId()), events);
 
         if (gameSession.getServer() != null && gameSession.getServer().serverId().value().equals(command.getServerId())) {
-            gameSession.disconnectClientFromServer(command.getGameSessionId(), command.getServerId(), command.getClientId());
+            gameSession.disconnectClientFromServer(command.getGameSessionId(),command.getClientId(), command.getServerId());
             return gameSession.getUncommittedChanges().stream().map(eventsRepository::saveEvent).toList();
         }
         else{

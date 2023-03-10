@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.GameSessionId;
 import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.CloseServerSessionCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CloseServerSessionUseCase implements UseCaseCommand<CloseServerSessionCommand> {
 
     EventsRepository eventsRepository;

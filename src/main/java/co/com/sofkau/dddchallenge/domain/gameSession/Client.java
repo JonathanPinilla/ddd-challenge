@@ -17,10 +17,12 @@ public class Client extends Entity<ClientId> {
     protected ServerId serverId;
     protected PlayerId playerId;
 
-    public Client(ClientId id, Ip ip, Location location, PlayerId playerId) {
-        super(id);
+    public Client(ClientId clientId, Ip ip, Location location, PlayerId playerId) {
+        super(clientId);
+        this.clientId = clientId;
         this.ip = ip;
         this.location = location;
+        this.playerId = playerId;
     }
 
     public ClientId clientId() {
@@ -39,16 +41,16 @@ public class Client extends Entity<ClientId> {
         return serverId;
     }
 
+    public PlayerId playerId() {
+        return playerId;
+    }
+
     public void connectToServer(ServerId serverId) {
         Objects.requireNonNull(serverId);
         this.serverId = serverId;
     }
 
-    public void disconnectFromServer(ServerId serverId) {
-        if(this.serverId.equals(serverId)){
-            this.serverId = null;
-        }else {
-            throw new IllegalArgumentException("The client is not connected to this server");
-        }
+    public void disconnectFromServer() {
+        this.serverId = null;
     }
 }

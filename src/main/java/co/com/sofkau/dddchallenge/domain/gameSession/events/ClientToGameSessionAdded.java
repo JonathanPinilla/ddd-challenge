@@ -8,16 +8,14 @@ public class ClientToGameSessionAdded extends DomainEvent {
     private final String clientId;
     private final String ip;
     private final String location;
-    private final String serverId;
     private final String playerId;
 
-    public ClientToGameSessionAdded(String gameSessionId, String clientId, String ip, String location, String serverId, String playerId) {
+    public ClientToGameSessionAdded(String gameSessionId, String clientId, String ip, String location, String playerId) {
         super("dddchallenge.domain.gameSession.clientToGameSessionAdded");
         this.gameSessionId = gameSessionId;
         this.clientId = clientId;
         this.ip = ip;
         this.location = location;
-        this.serverId = serverId;
         this.playerId = playerId;
     }
 
@@ -35,10 +33,6 @@ public class ClientToGameSessionAdded extends DomainEvent {
 
     public String getLocation() {
         return location;
-    }
-
-    public String getServerId() {
-        return serverId;
     }
 
     public String getPlayerId() {

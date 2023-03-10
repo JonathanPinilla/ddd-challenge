@@ -22,7 +22,7 @@ public class GameSession extends AggregateRoot<GameSessionId> {
     public GameSession(GameSessionId gameSessionId, GameState gameState, SocialId socialId) {
         super(gameSessionId);
         subscribe(new GameSessionEventChange(this));
-        appendChange(new GameSessionCreated(gameSessionId.value(), gameState, socialId)).apply();
+        appendChange(new GameSessionCreated(gameSessionId.value(), gameState, socialId.value())).apply();
     }
 
     private GameSession(GameSessionId gameSessionId) {
@@ -46,13 +46,12 @@ public class GameSession extends AggregateRoot<GameSessionId> {
         appendChange(new ServerToGameSessionAdded(gameSessionId, serverId, name, location, ip, isOpen)).apply();
     }
 
-    public void addClient(String gameSessionId, String clientId, String ip, String location, String serverId, String playerId) {
+    public void addClient(String gameSessionId, String clientId, String ip, String location, String playerId) {
         Objects.requireNonNull(gameSessionId);
         Objects.requireNonNull(clientId);
         Objects.requireNonNull(ip);
         Objects.requireNonNull(location);
-        Objects.requireNonNull(serverId);
-        appendChange(new ClientToGameSessionAdded(gameSessionId, clientId, ip, location, serverId, playerId)).apply();
+        appendChange(new ClientToGameSessionAdded(gameSessionId, clientId, ip, location, playerId)).apply();
     }
 
     public void closeServerSession(String gameSessionId, String serverId, Boolean isOpen) {
@@ -72,7 +71,7 @@ public class GameSession extends AggregateRoot<GameSessionId> {
     public void disconnectClientFromServer(String gameSessionId, String clientId, String serverId) {
         Objects.requireNonNull(gameSessionId);
         Objects.requireNonNull(clientId);
-        appendChange(new ClientFromServerDisconnected(gameSessionId, clientId, serverId)).apply();
+        appendChange(new ClientFromServerDisconnected(gameSessionId, clientId)).apply();
     }
 
     public void updateGameState(String gameSessionId, Integer score, Integer timeLeft, String winnerId, String socialId) {

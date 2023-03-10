@@ -14,6 +14,7 @@ public class GameSessionEventChange extends EventChange {
 
     public GameSessionEventChange(GameSession gameSession) {
         apply((GameSessionCreated event) -> {
+            gameSession.gameSessionId = new GameSessionId(event.getGameSessionId());
             gameSession.clients = new ArrayList<>();
             gameSession.gameState = new GameState(
                     event.getScore(),
@@ -41,15 +42,6 @@ public class GameSessionEventChange extends EventChange {
         apply((ServerSessionClosed event) -> {
             gameSession.server.closeServer(new IsOpen(event.getIsOpen()));
         });
-        apply((GameStateUpdated event) -> {
-            gameSession.updateGameState(
-                    event.getGameSessionId(),
-                    event.getScore(),
-                    event.getTimeLeft(),
-                    event.getWinnerId(),
-                    event.getWinnerId()
-            );
-        });
         apply((ClientToServerConnected event) -> {
             gameSession.clients.stream()
                     .filter(client -> client.identity().value().equals(event.getClientId()))
@@ -58,7 +50,14 @@ public class GameSessionEventChange extends EventChange {
         apply((ClientFromServerDisconnected event) -> {
             gameSession.clients.stream()
                     .filter(client -> client.identity().value().equals(event.getClientId()))
-                    .forEach(client -> client.disconnectFromServer(new ServerId(event.getServerId())));
+                    .forEach(Client::disconnectFromServer);
+        });
+        apply((GameStateUpdated event) -> {
+            gameSession.gameState = new GameState(
+                    event.getScore(),
+                    event.getTimeLeft(),
+                    event.getWinnerId()
+            );
         });
     }
 

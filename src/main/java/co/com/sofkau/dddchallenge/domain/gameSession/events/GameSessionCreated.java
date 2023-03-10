@@ -10,9 +10,9 @@ public class GameSessionCreated extends DomainEvent {
     private final Integer score;
     private final Integer timeLeft;
     private final String winnerId;
-    private final SocialId socialId;
+    private final String socialId;
 
-    public GameSessionCreated(String gameSessionId, GameState gameState, SocialId socialId) {
+    public GameSessionCreated(String gameSessionId, GameState gameState, String socialId) {
         super("dddchallenge.domain.gameSession.gameSessionCreated");
         this.gameSessionId = gameSessionId;
         this.score = gameState.value().score();
@@ -37,7 +37,7 @@ public class GameSessionCreated extends DomainEvent {
         return winnerId;
     }
 
-    public SocialId getSocialId() {
+    public String getSocialId() {
         return socialId;
     }
 

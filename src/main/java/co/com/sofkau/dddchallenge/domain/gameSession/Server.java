@@ -15,8 +15,9 @@ public class Server extends Entity<ServerId> {
     protected Ip ip;
     protected IsOpen isOpen;
 
-    public Server(ServerId id, Name name, Location location, Ip ip, IsOpen isOpen) {
-        super(id);
+    public Server(ServerId serverId, Name name, Location location, Ip ip, IsOpen isOpen) {
+        super(serverId);
+        this.serverId = serverId;
         this.name = name;
         this.location = location;
         this.ip = ip;

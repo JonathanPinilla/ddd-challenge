@@ -8,9 +8,11 @@ import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.CreateGameSessionCommand;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.GameState;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CreateGameSessionUseCase implements UseCaseCommand<CreateGameSessionCommand> {
 
     EventsRepository eventsRepository;

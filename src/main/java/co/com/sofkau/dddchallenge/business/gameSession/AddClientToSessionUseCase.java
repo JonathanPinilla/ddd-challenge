@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.GameSessionId;
 import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.AddClientToSessionCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AddClientToSessionUseCase implements UseCaseCommand<AddClientToSessionCommand> {
 
     EventsRepository eventsRepository;
@@ -28,7 +30,6 @@ public class AddClientToSessionUseCase implements UseCaseCommand<AddClientToSess
                 command.getClientId(),
                 command.getIp(),
                 command.getLocation(),
-                command.getServerId(),
                 command.getPlayerId()
         );
 

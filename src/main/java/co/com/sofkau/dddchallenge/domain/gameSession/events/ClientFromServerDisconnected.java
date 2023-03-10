@@ -8,11 +8,11 @@ public class ClientFromServerDisconnected extends DomainEvent {
     private final String clientId;
     private final String serverId;
 
-    public ClientFromServerDisconnected(String gameSessionId, String clientId, String serverId) {
+    public ClientFromServerDisconnected(String gameSessionId, String clientId) {
         super("dddchallenge.domain.gameSession.clientFromServerDisconnected");
         this.gameSessionId = gameSessionId;
         this.clientId = clientId;
-        this.serverId = serverId;
+        this.serverId = null;
     }
 
     public String getGameSessionId() {

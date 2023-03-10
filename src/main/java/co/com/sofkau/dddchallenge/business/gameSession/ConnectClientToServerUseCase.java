@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.GameSessionId;
 import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.commands.ConnectClientToServerCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ConnectClientToServerUseCase implements UseCaseCommand<ConnectClientToServerCommand> {
 
     EventsRepository eventsRepository;
