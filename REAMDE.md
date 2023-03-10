@@ -46,13 +46,13 @@ The challenge asked us to make at least 3 command driven use cases and 2 event d
 - Add a player to a social (command use case)
 - Add a Message to a social (command use case)
 - Change social state (command use case)
-- [Add Matches won to a player (event use case)](https://github.com/JonathanPinilla/ddd-challenge/blob/master/src/main/java/co/com/sofkau/dddchallenge/business/social/AddMatchesWonToPlayerEventUseCase.java)
+- [Add Matches won to a player (event use case)](https://github.com/JonathanPinilla/ddd-challenge/blob/master/src/main/java/co/com/sofkau/dddchallenge/business/social/AddMatchesWonToPlayerEventUseCase.java) triggered by the event of updating the game state
 #
 ### [Catalog use cases](https://github.com/JonathanPinilla/ddd-challenge/tree/master/src/main/java/co/com/sofkau/dddchallenge/business/catalog)
 - Create a catalog (command use case)
 - Add a game to a catalog (command use case)
 - Add a publisher to a catalog (command use case)
-- [Update Games sold (Event use case)](https://github.com/JonathanPinilla/ddd-challenge/blob/master/src/main/java/co/com/sofkau/dddchallenge/business/catalog/UpdateGamesSoldEventUseCase.java)
+- [Update Games sold (Event use case)](https://github.com/JonathanPinilla/ddd-challenge/blob/master/src/main/java/co/com/sofkau/dddchallenge/business/catalog/UpdateGamesSoldEventUseCase.java) triggered by the event of adding a game to a player
 
 All the use cases listed before were tested but focusing on the event use cases I made the following test:
 
