@@ -5,6 +5,7 @@ import co.com.sofkau.dddchallenge.domain.common.Name;
 import co.com.sofkau.dddchallenge.domain.catalog.values.Genre;
 import co.com.sofkau.dddchallenge.domain.catalog.values.Price;
 import co.com.sofkau.dddchallenge.domain.catalog.values.ReleaseDate;
+import co.com.sofkau.dddchallenge.domain.common.PublisherId;
 import co.com.sofkau.dddchallenge.generic.Entity;
 
 public class Game extends Entity<GameId> {
@@ -12,16 +13,16 @@ public class Game extends Entity<GameId> {
     protected GameId gameId;
     protected Name name;
     protected Genre genre;
-    protected Publisher publisher;
+    protected PublisherId publisherId;
     protected ReleaseDate releaseDate;
     protected Price price;
 
-    public Game(GameId gameId, Name name, Genre genre, Publisher publisher, ReleaseDate releaseDate, Price price) {
+    public Game(GameId gameId, Name name, Genre genre, PublisherId publisherId, ReleaseDate releaseDate, Price price) {
         super(gameId);
         this.gameId = gameId;
         this.name = name;
         this.genre = genre;
-        this.publisher = publisher;
+        this.publisherId = publisherId;
         this.releaseDate = releaseDate;
         this.price = price;
     }
@@ -46,8 +47,8 @@ public class Game extends Entity<GameId> {
         return genre;
     }
 
-    public Publisher publisher() {
-        return publisher;
+    public PublisherId publisher() {
+        return publisherId;
     }
 
     public ReleaseDate releaseDate() {

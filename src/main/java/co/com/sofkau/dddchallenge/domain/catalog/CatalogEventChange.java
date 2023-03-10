@@ -1,5 +1,6 @@
 package co.com.sofkau.dddchallenge.domain.catalog;
 
+import co.com.sofkau.dddchallenge.domain.common.CatalogId;
 import co.com.sofkau.dddchallenge.domain.common.GameId;
 import co.com.sofkau.dddchallenge.domain.common.Name;
 import co.com.sofkau.dddchallenge.domain.common.PublisherId;
@@ -13,6 +14,7 @@ public class CatalogEventChange extends EventChange {
 
     public CatalogEventChange(Catalog catalog) {
         apply((CatalogCreated event) -> {
+            catalog.catalogId = new CatalogId(event.getCatalogId());
             catalog.publishers = new ArrayList<>();
             catalog.games = new ArrayList<>();
             catalog.totalGames = new TotalGames(0);
@@ -35,11 +37,7 @@ public class CatalogEventChange extends EventChange {
                     new Game(GameId.of(event.getGameId()),
                             new Name(event.getName()),
                             new Genre(event.getGenre()),
-                            new Publisher(
-                                    event.getPublisher().publisherId(),
-                                    event.getPublisher().name(),
-                                    event.getPublisher().foundationDate()
-                            ),
+                            PublisherId.of(event.getPublisherId()),
                             new ReleaseDate(event.getReleaseDate()),
                             new Price(event.getPrice())))
             ;

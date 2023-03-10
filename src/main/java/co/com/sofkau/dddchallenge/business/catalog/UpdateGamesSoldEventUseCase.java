@@ -4,12 +4,13 @@ import co.com.sofkau.dddchallenge.business.commons.EventsRepository;
 import co.com.sofkau.dddchallenge.business.commons.UseCaseEvent;
 import co.com.sofkau.dddchallenge.domain.catalog.Catalog;
 import co.com.sofkau.dddchallenge.domain.common.CatalogId;
-import co.com.sofkau.dddchallenge.domain.social.commands.AddGamesToPlayerCommand;
 import co.com.sofkau.dddchallenge.domain.social.events.GameToPlayerAdded;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class UpdateGamesSoldEventUseCase implements UseCaseEvent<GameToPlayerAdded> {
 
     EventsRepository eventsRepository;

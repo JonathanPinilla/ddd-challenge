@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.catalog.Catalog;
 import co.com.sofkau.dddchallenge.domain.catalog.commands.AddPublisherToCatalogCommand;
 import co.com.sofkau.dddchallenge.domain.common.CatalogId;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AddPublisherToCatalogUseCase implements UseCaseCommand<AddPublisherToCatalogCommand> {
 
     EventsRepository eventsRepository;

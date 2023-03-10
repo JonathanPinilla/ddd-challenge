@@ -1,6 +1,5 @@
 package co.com.sofkau.dddchallenge.domain.catalog.commands;
 
-import co.com.sofkau.dddchallenge.domain.catalog.Publisher;
 import co.com.sofkau.dddchallenge.generic.Command;
 
 import java.time.LocalDate;
@@ -11,11 +10,11 @@ public class AddGameToCatalogCommand extends Command {
     private final String gameId;
     private final String name;
     private final String genre;
-    private final Publisher publisher;
+    private final String publisher;
     private final LocalDate releaseDate;
     private final Double price;
 
-    public AddGameToCatalogCommand(String catalogId, String gameId, String name, String genre, Publisher publisher, LocalDate releaseDate, Double price) {
+    public AddGameToCatalogCommand(String catalogId, String gameId, String name, String genre, String publisher, LocalDate releaseDate, Double price) {
         this.catalogId = catalogId;
         this.gameId = gameId;
         this.name = name;
@@ -41,7 +40,7 @@ public class AddGameToCatalogCommand extends Command {
         return genre;
     }
 
-    public Publisher getPublisher() {
+    public String getPublisher() {
         return publisher;
     }
 

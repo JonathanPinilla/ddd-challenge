@@ -41,7 +41,7 @@ public class Catalog extends AggregateRoot<CatalogId> {
         return catalog;
     }
 
-    public void addGame(String catalogId, String gameId, String name, String genre, Publisher publisher, LocalDate releaseDate, Double price) {
+    public void addGame(String catalogId, String gameId, String name, String genre, String publisher, LocalDate releaseDate, Double price) {
         Objects.requireNonNull(catalogId);
         Objects.requireNonNull(gameId);
         Objects.requireNonNull(name);
