@@ -8,12 +8,16 @@ public class AddClientToSessionCommand extends Command {
     private final String clientId;
     private final String ip;
     private final String location;
+    private final String serverId;
+    private final String playerId;
 
-    public AddClientToSessionCommand(String gameSessionId, String clientId, String ip, String location) {
+    public AddClientToSessionCommand(String gameSessionId, String clientId, String ip, String location, String serverId, String playerId) {
         this.gameSessionId = gameSessionId;
         this.clientId = clientId;
         this.ip = ip;
         this.location = location;
+        this.serverId = serverId;
+        this.playerId = playerId;
     }
 
     public String getGameSessionId() {
@@ -30,6 +34,14 @@ public class AddClientToSessionCommand extends Command {
 
     public String getLocation() {
         return location;
+    }
+
+    public String getServerId() {
+        return serverId;
+    }
+
+    public String getPlayerId() {
+        return playerId;
     }
 
 }

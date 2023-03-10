@@ -1,7 +1,7 @@
 package co.com.sofkau.dddchallenge.domain.gameSession;
 
-import co.com.sofkau.dddchallenge.common.Name;
-import co.com.sofkau.dddchallenge.common.ServerId;
+import co.com.sofkau.dddchallenge.domain.common.Name;
+import co.com.sofkau.dddchallenge.domain.common.ServerId;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.Ip;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.IsOpen;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.Location;
@@ -21,6 +21,10 @@ public class Server extends Entity<ServerId> {
         this.location = location;
         this.ip = ip;
         this.isOpen = isOpen;
+    }
+
+    public ServerId serverId() {
+        return serverId;
     }
 
     public Name name() {

@@ -1,12 +1,8 @@
 package co.com.sofkau.dddchallenge.domain.gameSession;
 
-import co.com.sofkau.dddchallenge.common.ClientId;
-import co.com.sofkau.dddchallenge.common.Name;
-import co.com.sofkau.dddchallenge.common.ServerId;
-import co.com.sofkau.dddchallenge.domain.gameSession.events.ClientToGameSessionAdded;
-import co.com.sofkau.dddchallenge.domain.gameSession.events.GameSessionCreated;
-import co.com.sofkau.dddchallenge.domain.gameSession.events.ServerSessionClosed;
-import co.com.sofkau.dddchallenge.domain.gameSession.events.ServerToGameSessionAdded;
+import co.com.sofkau.dddchallenge.domain.common.*;
+import co.com.sofkau.dddchallenge.domain.gameSession.events.*;
+import co.com.sofkau.dddchallenge.domain.gameSession.values.GameState;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.Ip;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.IsOpen;
 import co.com.sofkau.dddchallenge.domain.gameSession.values.Location;
@@ -19,6 +15,11 @@ public class GameSessionEventChange extends EventChange {
     public GameSessionEventChange(GameSession gameSession) {
         apply((GameSessionCreated event) -> {
             gameSession.clients = new ArrayList<>();
+            gameSession.gameState = new GameState(
+                    event.getScore(),
+                    event.getTimeLeft(),
+                    event.getWinnerId()
+            );
         });
         apply((ServerToGameSessionAdded event) -> {
             gameSession.server = new Server(
@@ -33,10 +34,32 @@ public class GameSessionEventChange extends EventChange {
             gameSession.clients.add(new Client(
                     ClientId.of(event.getClientId()),
                     new Ip(event.getIp()),
-                    new Location(event.getLocation())
+                    new Location(event.getLocation()),
+                    new PlayerId(event.getPlayerId())
             ));
         });
-        apply((ServerSessionClosed event) -> gameSession.server.closeServer(new IsOpen(event.getIsOpen())));
+        apply((ServerSessionClosed event) -> {
+            gameSession.server.closeServer(new IsOpen(event.getIsOpen()));
+        });
+        apply((GameStateUpdated event) -> {
+            gameSession.updateGameState(
+                    event.getGameSessionId(),
+                    event.getScore(),
+                    event.getTimeLeft(),
+                    event.getWinnerId(),
+                    event.getWinnerId()
+            );
+        });
+        apply((ClientToServerConnected event) -> {
+            gameSession.clients.stream()
+                    .filter(client -> client.identity().value().equals(event.getClientId()))
+                    .forEach(client -> client.connectToServer(new ServerId(event.getServerId())));
+        });
+        apply((ClientFromServerDisconnected event) -> {
+            gameSession.clients.stream()
+                    .filter(client -> client.identity().value().equals(event.getClientId()))
+                    .forEach(client -> client.disconnectFromServer(new ServerId(event.getServerId())));
+        });
     }
 
 }

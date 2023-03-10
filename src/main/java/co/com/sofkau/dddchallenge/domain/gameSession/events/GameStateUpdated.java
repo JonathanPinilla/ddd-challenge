@@ -1,23 +1,21 @@
 package co.com.sofkau.dddchallenge.domain.gameSession.events;
 
-import co.com.sofkau.dddchallenge.domain.common.SocialId;
-import co.com.sofkau.dddchallenge.domain.gameSession.values.GameState;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
 
-public class GameSessionCreated extends DomainEvent {
+public class GameStateUpdated extends DomainEvent {
 
     private final String gameSessionId;
     private final Integer score;
     private final Integer timeLeft;
     private final String winnerId;
-    private final SocialId socialId;
+    private final String socialId;
 
-    public GameSessionCreated(String gameSessionId, GameState gameState, SocialId socialId) {
-        super("dddchallenge.domain.gameSession.gameSessionCreated");
+    public GameStateUpdated(String gameSessionId, Integer score, Integer timeLeft, String winnerId, String socialId) {
+        super("dddchallenge.domain.gameSession.gameStateUpdated");
         this.gameSessionId = gameSessionId;
-        this.score = gameState.value().score();
-        this.timeLeft = gameState.value().timeLeft();
-        this.winnerId = gameState.value().winnerId();
+        this.score = score;
+        this.timeLeft = timeLeft;
+        this.winnerId = winnerId;
         this.socialId = socialId;
     }
 
@@ -37,7 +35,7 @@ public class GameSessionCreated extends DomainEvent {
         return winnerId;
     }
 
-    public SocialId getSocialId() {
+    public String getSocialId() {
         return socialId;
     }
 
