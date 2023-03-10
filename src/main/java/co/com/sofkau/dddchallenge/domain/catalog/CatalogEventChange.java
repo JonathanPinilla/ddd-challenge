@@ -1,8 +1,8 @@
 package co.com.sofkau.dddchallenge.domain.catalog;
 
-import co.com.sofkau.dddchallenge.common.GameId;
-import co.com.sofkau.dddchallenge.common.Name;
-import co.com.sofkau.dddchallenge.common.PublisherId;
+import co.com.sofkau.dddchallenge.domain.common.GameId;
+import co.com.sofkau.dddchallenge.domain.common.Name;
+import co.com.sofkau.dddchallenge.domain.common.PublisherId;
 import co.com.sofkau.dddchallenge.domain.catalog.events.*;
 import co.com.sofkau.dddchallenge.domain.catalog.values.*;
 import co.com.sofkau.dddchallenge.generic.EventChange;

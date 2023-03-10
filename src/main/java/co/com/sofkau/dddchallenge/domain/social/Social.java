@@ -23,13 +23,13 @@ public class Social extends AggregateRoot<SocialId> {
         appendChange(new SocialCreated(socialId.value(), state.value(), catalogId.value())).apply();
     }
 
-    public Social(SocialId socialId) {
+    private Social(SocialId socialId) {
         super(socialId);
         subscribe(new SocialEventChange(this));
     }
 
     public static Social from(SocialId socialId, List<DomainEvent> events) {
-        var social = new Social(socialId);
+        Social social = new Social(socialId);
         events.forEach(social::applyEvent);
         return social;
     }

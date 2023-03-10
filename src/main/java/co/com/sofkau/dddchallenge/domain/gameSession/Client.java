@@ -45,6 +45,10 @@ public class Client extends Entity<ClientId> {
     }
 
     public void disconnectFromServer(ServerId serverId) {
-        this.serverId = null;
+        if(this.serverId.equals(serverId)){
+            this.serverId = null;
+        }else {
+            throw new IllegalArgumentException("The client is not connected to this server");
+        }
     }
 }

@@ -8,11 +8,13 @@ public class AddPublisherToCatalogCommand extends Command {
 
     private final String catalogId;
     private final String publisherId;
+    private final String name;
     private final LocalDate foundationDate;
 
-    public AddPublisherToCatalogCommand(String catalogId, String publisherId, LocalDate foundationDate) {
+    public AddPublisherToCatalogCommand(String catalogId, String publisherId, String name, LocalDate foundationDate) {
         this.catalogId = catalogId;
         this.publisherId = publisherId;
+        this.name = name;
         this.foundationDate = foundationDate;
     }
 
@@ -22,6 +24,10 @@ public class AddPublisherToCatalogCommand extends Command {
 
     public String getPublisherId() {
         return publisherId;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public LocalDate getFoundationDate() {

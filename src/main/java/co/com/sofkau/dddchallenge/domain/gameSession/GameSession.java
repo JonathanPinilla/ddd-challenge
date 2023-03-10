@@ -25,13 +25,13 @@ public class GameSession extends AggregateRoot<GameSessionId> {
         appendChange(new GameSessionCreated(gameSessionId.value(), gameState, socialId)).apply();
     }
 
-    public GameSession(GameSessionId gameSessionId) {
+    private GameSession(GameSessionId gameSessionId) {
         super(gameSessionId);
         subscribe(new GameSessionEventChange(this));
     }
 
     public static GameSession from(GameSessionId gameSessionId, List<DomainEvent> events) {
-        var gameSession = new GameSession(gameSessionId);
+        GameSession gameSession = new GameSession(gameSessionId);
         events.forEach(gameSession::applyEvent);
         return gameSession;
     }
@@ -72,7 +72,6 @@ public class GameSession extends AggregateRoot<GameSessionId> {
     public void disconnectClientFromServer(String gameSessionId, String clientId, String serverId) {
         Objects.requireNonNull(gameSessionId);
         Objects.requireNonNull(clientId);
-        Objects.requireNonNull(serverId);
         appendChange(new ClientFromServerDisconnected(gameSessionId, clientId, serverId)).apply();
     }
 

@@ -1,11 +1,10 @@
 package co.com.sofkau.dddchallenge.domain.catalog;
 
-import co.com.sofkau.dddchallenge.common.Name;
-import co.com.sofkau.dddchallenge.common.PublisherId;
+import co.com.sofkau.dddchallenge.domain.common.Name;
+import co.com.sofkau.dddchallenge.domain.common.PublisherId;
 import co.com.sofkau.dddchallenge.domain.catalog.values.FoundationDate;
 import co.com.sofkau.dddchallenge.generic.Entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Publisher extends Entity<PublisherId> {

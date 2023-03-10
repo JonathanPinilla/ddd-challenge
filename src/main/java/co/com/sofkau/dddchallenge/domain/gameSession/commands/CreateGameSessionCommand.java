@@ -8,12 +8,14 @@ public class CreateGameSessionCommand extends Command {
     private final Integer score;
     private final Integer timeLeft;
     private final String winnerId;
+    private final String socialId;
 
-    public CreateGameSessionCommand(String gameSessionId, Integer score, Integer timeLeft, String winnerId) {
+    public CreateGameSessionCommand(String gameSessionId, Integer score, Integer timeLeft, String winnerId, String socialId) {
         this.gameSessionId = gameSessionId;
         this.score = score;
         this.timeLeft = timeLeft;
         this.winnerId = winnerId;
+        this.socialId = socialId;
     }
 
     public String getGameSessionId() {
@@ -30,6 +32,10 @@ public class CreateGameSessionCommand extends Command {
 
     public String getWinnerId() {
         return winnerId;
+    }
+
+    public String getSocialId() {
+        return socialId;
     }
 
 }

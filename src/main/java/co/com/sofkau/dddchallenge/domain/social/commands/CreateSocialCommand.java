@@ -6,10 +6,12 @@ public class CreateSocialCommand extends Command {
 
     private final String socialId;
     private final String state;
+    private final String catalogId;
 
-    public CreateSocialCommand(String socialId, String state) {
+    public CreateSocialCommand(String socialId, String state, String catalogId) {
         this.socialId = socialId;
         this.state = state;
+        this.catalogId = catalogId;
     }
 
     public String getSocialId() {
@@ -18,6 +20,10 @@ public class CreateSocialCommand extends Command {
 
     public String getState() {
         return state;
+    }
+
+    public String getCatalogId() {
+        return catalogId;
     }
 
 }

@@ -1,7 +1,7 @@
 package co.com.sofkau.dddchallenge.domain.catalog;
 
-import co.com.sofkau.dddchallenge.common.GameId;
-import co.com.sofkau.dddchallenge.common.Name;
+import co.com.sofkau.dddchallenge.domain.common.GameId;
+import co.com.sofkau.dddchallenge.domain.common.Name;
 import co.com.sofkau.dddchallenge.domain.catalog.values.Genre;
 import co.com.sofkau.dddchallenge.domain.catalog.values.Price;
 import co.com.sofkau.dddchallenge.domain.catalog.values.ReleaseDate;
