@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.SocialId;
 import co.com.sofkau.dddchallenge.domain.social.Social;
 import co.com.sofkau.dddchallenge.domain.social.commands.ChangeSocialStateCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class ChangeSocialStateUseCase implements UseCaseCommand<ChangeSocialStateCommand> {
 
     EventsRepository eventsRepository;
@@ -20,7 +22,8 @@ public class ChangeSocialStateUseCase implements UseCaseCommand<ChangeSocialStat
     @Override
     public List<DomainEvent> apply(ChangeSocialStateCommand command) {
         List<DomainEvent> events = eventsRepository.findByAggregateRootId(command.getSocialId());
-        var social = Social.from(SocialId.of(command.getSocialId()), events);
+        Social social = Social.from(SocialId.of(command.getSocialId()), events);
+
         if (social.getState().value().equals(command.getState())){
             throw new IllegalArgumentException("You can't change the state to the same state");
         }

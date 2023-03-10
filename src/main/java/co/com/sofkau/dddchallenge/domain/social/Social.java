@@ -50,8 +50,8 @@ public class Social extends AggregateRoot<SocialId> {
         return state;
     }
 
-    public void addMessage(String socialId, String messageId,String emitterId, String receiverId, String content) {
-        appendChange(new MessageToSocialAdded(socialId, messageId, emitterId, receiverId, content)).apply();
+    public void addMessage(String socialId, String messageId, String content, String emitterId, String receiverId) {
+        appendChange(new MessageToSocialAdded(socialId, messageId, content, emitterId, receiverId)).apply();
     }
 
     public void addPlayer(String socialId, String playerId, String name, String nickName) {
@@ -67,6 +67,6 @@ public class Social extends AggregateRoot<SocialId> {
     }
 
     public void changeState(String socialId, String state) {
-        appendChange(new SocialStateChanged(socialId,state)).apply();
+        appendChange(new SocialStateChanged(socialId, state)).apply();
     }
 }

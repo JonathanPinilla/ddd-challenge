@@ -6,9 +6,11 @@ import co.com.sofkau.dddchallenge.domain.common.SocialId;
 import co.com.sofkau.dddchallenge.domain.social.Social;
 import co.com.sofkau.dddchallenge.domain.social.commands.AddMessageToSocialCommand;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AddMessageToSocialUseCase implements UseCaseCommand<AddMessageToSocialCommand> {
 
     EventsRepository eventsRepository;
@@ -32,9 +34,9 @@ public class AddMessageToSocialUseCase implements UseCaseCommand<AddMessageToSoc
                     social.addMessage(
                             command.getSocialId(),
                             command.getMessageId(),
+                            command.getContent(),
                             command.getEmitterId(),
-                            command.getReceiverId(),
-                            command.getContent()
+                            command.getReceiverId()
                     );
 
                     return social.getUncommittedChanges().stream().map(eventsRepository::saveEvent).toList();

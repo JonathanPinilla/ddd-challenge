@@ -8,9 +8,11 @@ import co.com.sofkau.dddchallenge.domain.gameSession.GameSession;
 import co.com.sofkau.dddchallenge.domain.gameSession.events.GameStateUpdated;
 import co.com.sofkau.dddchallenge.domain.social.Social;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class AddMatchesWonToPlayerEventUseCase implements UseCaseEvent<GameStateUpdated> {
 
     EventsRepository eventsRepository;
@@ -21,9 +23,6 @@ public class AddMatchesWonToPlayerEventUseCase implements UseCaseEvent<GameState
 
     @Override
     public List<DomainEvent> apply(GameStateUpdated event) {
-
-        List<DomainEvent> foreignAggregateEvents = eventsRepository.findByAggregateRootId(event.getGameSessionId());
-        var gameSession = GameSession.from(GameSessionId.of(event.getGameSessionId()), foreignAggregateEvents);
 
         List<DomainEvent> events = eventsRepository.findByAggregateRootId(event.getSocialId());
         var social = Social.from(SocialId.of(event.getSocialId()), events);

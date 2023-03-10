@@ -8,9 +8,11 @@ import co.com.sofkau.dddchallenge.domain.social.Social;
 import co.com.sofkau.dddchallenge.domain.social.commands.CreateSocialCommand;
 import co.com.sofkau.dddchallenge.domain.social.values.State;
 import co.com.sofkau.dddchallenge.generic.DomainEvent;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class CreateSocialUseCase implements UseCaseCommand<CreateSocialCommand> {
 
     EventsRepository eventsRepository;

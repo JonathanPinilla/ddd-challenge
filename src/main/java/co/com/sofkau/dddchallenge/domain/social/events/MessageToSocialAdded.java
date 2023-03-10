@@ -11,7 +11,7 @@ public class MessageToSocialAdded extends DomainEvent {
     private final String receiverId;
 
     public MessageToSocialAdded(String messageId, String socialId, String content, String emitterId, String receiverId) {
-        super("dddchallenge.social.messagetosocialadded");
+        super("dddchallenge.social.messageToSocialAdded");
         this.messageId = messageId;
         this.socialId = socialId;
         this.content = content;

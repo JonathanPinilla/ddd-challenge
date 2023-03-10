@@ -18,6 +18,7 @@ public class SocialEventChange extends EventChange {
     public SocialEventChange(Social social) {
         apply((SocialCreated event) -> {
             social.socialId = SocialId.of(event.getSocialId());
+            social.state = new State(event.getState());
             social.players = new ArrayList<>();
             social.messages = new ArrayList<>();
         });
@@ -43,11 +44,13 @@ public class SocialEventChange extends EventChange {
         apply((MatchesWonToPlayerAdded event) -> social.players.stream()
                 .filter(player -> player.playerId().value().equals(event.getPlayerId()))
                 .findFirst()
-                .ifPresent(Player::addMatchesWonPlayer));
+                .ifPresent(Player::addMatchesWonPlayer)
+        );
         apply((GameToPlayerAdded event) -> social.players.stream()
                 .filter(player -> player.playerId().value().equals(event.getPlayerId()))
                 .findFirst()
-                .ifPresent(player -> player.addGameToPlayer(event.getGameId())));
+                .ifPresent(player -> player.addGameToPlayer(event.getGameId()))
+        );
     }
 
 }
